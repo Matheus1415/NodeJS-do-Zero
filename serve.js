@@ -9,7 +9,9 @@ server.get("/", () => {
 });
 
 server.get("/videos", (request, reply) => {
-  const video = dataBase.list();
+  const search =  request.query.search
+  console.log(search)
+  const video = dataBase.list(search);
   reply
     .status(200)
     .send({ message: "Vídeo listados com sucesso!", video: video });
